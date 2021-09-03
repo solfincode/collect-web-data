@@ -8,7 +8,6 @@ const scrapeHtml = async (url) => {
   const $ = await cheerio.load(html.data);
   const items = $("#quote-summary");
   const tableObj = {};
-  const tdArr = [];
   items.each((i, el) => {
     const tr = $(el).find("table tbody tr");
     tr.each((index, element) => {
@@ -16,7 +15,7 @@ const scrapeHtml = async (url) => {
       const tdSecond = $(element).find("td").eq(1).text();
       tableObj[`${tdFirst}`] = tdSecond;
     });
-    console.log(tableObj.Open);
+    console.log(tableObj);
   });
 };
 
